@@ -66,8 +66,6 @@ struct dev {
 
 #define PORT 25138
 
-
-
 class YdLidarX4 {
 public:
 	YdLidarX4();
@@ -75,18 +73,18 @@ public:
 	virtual ~YdLidarX4();
 
 	bool Connect();
-        bool Disconnect();
-        bool Reset();
-        
+	bool Disconnect();
+	bool Reset();
+		
 	bool StartScanning();
 	bool StopScanning();
-        int* GetSampleData();
-        
+	int* GetSampleData();
+		
 	struct dev * GetDeviceInfo();
 	int GetHealthStatus();
-        
+		
 private:
-    
+	
 	bool is_connected;
 	bool is_scanning;
 

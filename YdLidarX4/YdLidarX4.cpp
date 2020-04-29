@@ -150,6 +150,10 @@ bool YdLidarX4::_get_response() {
 	return true;
 }
 
+// Conectar a lidar: 
+// Params: Sin parámetros
+//	Envia comando de conexion y obtiene la respuesta
+
 bool YdLidarX4::Connect(void) {
 
 	if (!_send_command(cmd.CMD_CONNECT)) {
@@ -163,6 +167,10 @@ bool YdLidarX4::Connect(void) {
 	is_connected = true;
 	return true;
 }
+
+// Iniciar escaneo: 
+// Params: Sin parámetros
+//	Envia comando de iniciar escaneo y obtiene la respuesta
 
 bool YdLidarX4::StartScanning(void) {
 
@@ -182,7 +190,12 @@ bool YdLidarX4::StartScanning(void) {
 		return false;
 }
 
-struct dev * YdLidarX4::GetDeviceInfo() {
+// Obtener informacion de dispositivo: 
+// Params: Sin parámetros
+//	Envia comando de obtener informacion de dispositivo y 
+//	devuelve un apuntador al struct dev
+
+struct dev * YdLidarX4::GetDeviceInfo(void) {
 
 	if (is_connected) {
 
@@ -203,7 +216,11 @@ struct dev * YdLidarX4::GetDeviceInfo() {
 		return 0;
 }
 
-bool YdLidarX4::Disconnect() {
+// Desconectar: 
+// Params: Sin parámetros
+//	Envia comando de desconectar y finaliza la conexion
+
+bool YdLidarX4::Disconnect(void) {
 
 	if (is_connected) {
 
@@ -225,7 +242,11 @@ bool YdLidarX4::Disconnect() {
 		return false;
 }
 
-bool YdLidarX4::Reset() {
+// Reiniciar: 
+// Params: Sin parámetros
+//	Reinicia el dispositivo pero no reinicia la conexion
+
+bool YdLidarX4::Reset(void) {
 
 	if (!_send_command(cmd.CMD_RESET)) {
 		return false;
@@ -240,7 +261,11 @@ bool YdLidarX4::Reset() {
 	return true;
 }
 
-int YdLidarX4::GetHealthStatus() {
+// Obtener estado: 
+// Params: Sin parámetros
+//	Obtiene el estado actual del dispositivo
+
+int YdLidarX4::GetHealthStatus(void) {
 
 	if (is_connected) {
 
@@ -256,6 +281,10 @@ int YdLidarX4::GetHealthStatus() {
 	} else
 		return 0;
 }
+
+// Obtener muestra: 
+// Params: Sin parámetros
+//	Obtiene una muestra de datos y devuelve un apultador a un vector de muestras
 
 int* YdLidarX4::GetSampleData() {
 
@@ -273,6 +302,11 @@ int* YdLidarX4::GetSampleData() {
 	} else
 		return 0;
 }
+
+// Detener escaneo: 
+// Params: Sin parámetros
+//	Envia comando para detener el escaneo y obtiene la respuesta
+
 
 bool YdLidarX4::StopScanning() {
 
